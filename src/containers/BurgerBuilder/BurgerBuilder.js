@@ -73,6 +73,10 @@ removeIngredientHandler = (type) => {
     this.updatePurchaseState(updatedIngredients);
 }
 
+purchaseCancelHandler = () => {
+    this.setState({purchasing: false});
+}
+
 purchaseHandler = () => {
     this.setState({purchasing: true});
 }
@@ -88,7 +92,7 @@ purchaseHandler = () => {
 
         return(
             <Aux>
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>
                 <Burger ingredients= {this.state.ingredients}/>
